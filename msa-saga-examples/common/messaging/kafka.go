@@ -7,7 +7,7 @@ import (
 	"strconv"
 
 	"github.com/IBM/sarama"
-	commonerrors "github.com/kyungseok/msa-saga-go-examples/common/errors"
+	commonerrors "github.com/kyungseok-lee/msa-saga-go-examples/common/errors"
 	"go.uber.org/zap"
 )
 

@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/kyungseok/msa-saga-go-examples/services/order/internal/domain"
+	"github.com/kyungseok-lee/msa-saga-go-examples/services/order/internal/domain"
 	"github.com/lib/pq"
 )
 

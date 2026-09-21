@@ -6,8 +6,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/kyungseok/msa-saga-go-examples/common/messaging"
-	"github.com/kyungseok/msa-saga-go-examples/services/order/internal/repository"
+	"github.com/kyungseok-lee/msa-saga-go-examples/common/messaging"
+	"github.com/kyungseok-lee/msa-saga-go-examples/services/order/internal/repository"
 	"go.uber.org/zap"
 )
 

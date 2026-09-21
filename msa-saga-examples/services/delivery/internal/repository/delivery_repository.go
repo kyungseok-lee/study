@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/kyungseok/msa-saga-go-examples/common/errors"
-	"github.com/kyungseok/msa-saga-go-examples/services/delivery/internal/domain"
+	"github.com/kyungseok-lee/msa-saga-go-examples/common/errors"
+	"github.com/kyungseok-lee/msa-saga-go-examples/services/delivery/internal/domain"
 )
 
 // DeliveryRepository 배송 저장소 인터페이스

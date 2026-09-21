@@ -8,14 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meant4i/extjs-example.git"
+    "url": "git+https://github.com/kyungseok-lee/study.git",
+    "directory": "extjs-study"
   },
-  "author": "meant4i",
+  "author": "kyungseok-lee",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/meant4i/extjs-example/issues"
+    "url": "https://github.com/kyungseok-lee/study/issues"
   },
-  "homepage": "https://github.com/meant4i/extjs-example#readme",
+  "homepage": "https://github.com/kyungseok-lee/study/tree/main/extjs-study#readme",
   "dependencies": {
     "express": "^4.16.3",
     "glob": "^7.1.3"
