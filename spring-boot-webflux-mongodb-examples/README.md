@@ -20,7 +20,7 @@
 - 이메일 중복 검증
 - 부서별 사용자 조회
 - 나이 범위별 사용자 검색
-- 사용자 활성화/비활성화
+- 활성 사용자 조회 및 사용자 비활성화
 
 ### Product Management API
 - 상품 생성, 조회, 수정, 삭제 (CRUD)
@@ -62,12 +62,14 @@ src/
 
 ### 1. 환경 요구사항
 - Java 17 이상
+- 로컬 Gradle 설치 (래퍼 스크립트는 저장소에 없음)
 - MongoDB 실행 중 (기본: localhost:27017)
 
 ### 2. 애플리케이션 실행
 ```bash
-# 프로젝트 클론 후
-./gradlew bootRun
+git clone https://github.com/kyungseok-lee/study.git
+cd study/spring-boot-webflux-mongodb-examples
+gradle bootRun
 ```
 
 ### 3. API 문서 확인
@@ -84,6 +86,8 @@ GET    /api/v1/users/{id}                          # 사용자 조회
 PUT    /api/v1/users/{id}                          # 사용자 수정
 DELETE /api/v1/users/{id}                          # 사용자 삭제
 GET    /api/v1/users/email/{email}                 # 이메일로 사용자 조회
+PATCH  /api/v1/users/{id}/deactivate               # 사용자 비활성화
+GET    /api/v1/users/exists/email/{email}          # 이메일 존재 확인
 GET    /api/v1/users/active                        # 활성 사용자 조회
 GET    /api/v1/users/department/{dept}             # 부서별 사용자 조회
 GET    /api/v1/users/search?name=xxx               # 이름 검색
@@ -100,9 +104,9 @@ DELETE /api/v1/products/{id}            # 상품 삭제
 GET    /api/v1/products/search?name=xxx # 상품 검색
 GET    /api/v1/products/category/{cat}  # 카테고리별 상품
 GET    /api/v1/products/available       # 재고 있는 상품
-GET    /api/v1/products/price-range     # 가격 범위 검색
-GET    /api/v1/products/tags            # 태그 기반 검색
-PATCH  /api/v1/products/{id}/stock      # 재고 수량 업데이트
+GET    /api/v1/products/price-range?minPrice=10&maxPrice=100 # 가격 범위 검색
+GET    /api/v1/products/tags?tags=book,new # 태그 기반 검색
+PATCH  /api/v1/products/{id}/stock?quantity=10 # 재고 수량 업데이트
 ```
 
 ## 🔧 설정
@@ -149,9 +153,11 @@ suspend fun createUser(@RequestBody request: CreateUserRequest): UserResponse {
 ## 🧪 테스트
 
 ```bash
-# 단위 테스트 실행
-./gradlew test
+# MongoDB 통합 테스트 포함: 외부 MongoDB를 지정하거나 내장 MongoDB 다운로드 필요
+MONGODB_TEST_URI=mongodb://localhost:27017/reactive_test_db gradle test
 ```
+
+`ReactiveApplicationTests`는 인증 없는 로컬 단일 MongoDB 연결이 필요합니다. 현재 테스트 설정은 URI의 호스트·포트만 사용하며 데이터베이스는 테스트 프로필의 `reactive_test_db`입니다 (URI의 인증·옵션·DB 이름은 적용하지 않습니다). `MONGODB_TEST_URI`를 생략하면 내장 MongoDB를 다운로드해 실행합니다. CI는 MongoDB 7 서비스를 사용합니다.
 
 ## 📋 TODO
 

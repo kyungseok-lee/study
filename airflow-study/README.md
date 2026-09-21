@@ -40,7 +40,7 @@ Apache Airflow를 처음 접하는 분들을 위한 한국어 학습 자료입�
 |---|------|----------|
 | 09 | [DAG 실행 메커니즘](docs/09-DAG-실행메커니즘.md) | logical_date, data_interval, run_id |
 | 10 | [Web UI에서 단일 실행 (Trigger)](docs/10-단일실행-Trigger.md) | ▶ 버튼, conf 전달, 파라미터 설정 |
-| 11 | [Web UI에서 백필 (Backfill)](docs/11-백필-WebUI.md) | Backfill 모달, dry-run, 정렬 |
+| 11 | [Web UI에서 백필 (Backfill)](docs/11-백필-WebUI.md) | 2.9.3 CLI 실습 + 3.0+ UI 백필 참고 |
 | 12 | [CLI 백필 명령어](docs/12-백필-CLI.md) | `airflow dags backfill` 옵션 전체 |
 | 13 | [Catchup과 Schedule 동작](docs/13-Catchup과-Schedule.md) | catchup=True/False, max_active_runs |
 

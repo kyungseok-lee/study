@@ -66,18 +66,20 @@ pipeline {
 
 1. Jenkins 대시보드에서 "New Item" 클릭 후 "Pipeline" 선택
 2. Definition에서 "Pipeline script from SCM" 선택
-3. SCM을 Git으로 선택하고 저장소 URL 입력
-4. Script Path에 실행할 예제 경로 입력 (예: `01-hello-world/Jenkinsfile`)
+3. SCM을 Git으로 선택하고 저장소 URL `https://github.com/kyungseok-lee/study.git`, 브랜치 `*/main` 입력
+4. Script Path에 실행할 예제 경로 입력 (예: `jenkins-examples/01-hello-world/Jenkinsfile`)
 5. "Save" 후 "Build Now" 클릭
 
 ## 실행 전 확인
 
 - 예제는 `sh` 스텝을 사용하므로 Linux/Unix 계열 Jenkins 에이전트에서 실행하는 것을 권장합니다.
-- Docker 예제는 Docker가 설치된 에이전트에서만 실제 Docker 명령을 실행하세요.
+- Docker 예제의 빌드·푸시 단계는 기본적으로 echo 데모이며 실제 명령은 주석으로 제공됩니다. 실제 명령을 활성화하려면 Docker가 설치된 에이전트와 레지스트리 자격증명이 필요합니다.
 - 로컬에서는 `scripts/validate-jenkinsfiles.sh`로 공백 오류를 확인할 수 있습니다.
 - Jenkins Declarative Linter를 사용하려면 `JENKINS_URL`과 `JENKINS_CLI_JAR`를 설정한 뒤 같은 스크립트를 실행하세요.
 
 ```bash
+# study 저장소 루트에서
+cd jenkins-examples
 scripts/validate-jenkinsfiles.sh
 
 JENKINS_URL=http://localhost:8080 \

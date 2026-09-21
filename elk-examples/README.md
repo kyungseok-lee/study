@@ -1,13 +1,13 @@
 # ELK Stack Example Project
 
-[![GitHub](https://img.shields.io/badge/GitHub-kyungseok--lee%2Felk--examples-blue)](https://github.com/kyungseok-lee/elk-examples)
+[![GitHub](https://img.shields.io/badge/GitHub-kyungseok--lee%2Fstudy-blue)](https://github.com/kyungseok-lee/study/tree/main/elk-examples)
 [![Docker](https://img.shields.io/badge/Docker-Compose-blue)](https://docs.docker.com/compose/)
 [![Go](https://img.shields.io/badge/Go-1.21-blue)](https://golang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-14.0.4-black)](https://nextjs.org/)
 
 ELK Stack (Elasticsearch, Logstash, Kibana) + Filebeat를 활용한 로그 수집 및 분석 시스템 예제입니다.
 
-**GitHub**: https://github.com/kyungseok-lee/elk-examples
+**GitHub**: https://github.com/kyungseok-lee/study/tree/main/elk-examples
 
 ## 🏗️ 아키텍처
 
@@ -15,7 +15,7 @@ ELK Stack (Elasticsearch, Logstash, Kibana) + Filebeat를 활용한 로그 수�
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Next.js       │    │   Go Fiber      │    │   Logstash      │    │  Elasticsearch  │
 │   Client        │◄──►│   Server        │───►│   Pipeline      │───►│   Database      │
-│   (Port 3000)   │    │   (Port 8080)   │    │   (Port 5044)   │    │   (Port 9200)   │
+│   (Port 3000)   │    │   (Port 8080)   │    │ TCP 5000/Beats 5044│    │   (Port 9200)   │
 └─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
                                 │                      ▲                      │
                                 │                      │                      │
@@ -68,8 +68,8 @@ ELK Stack (Elasticsearch, Logstash, Kibana) + Filebeat를 활용한 로그 수�
 
 ### 1. 프로젝트 클론
 ```bash
-git clone https://github.com/kyungseok-lee/elk-examples.git
-cd elk-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/elk-examples
 ```
 
 ### 2. 원클릭 실행 (권장)
@@ -127,6 +127,10 @@ npm install
 npm run dev
 ```
 
+## 검증
+
+프로젝트 루트에서 `make -f scripts/Makefile test`는 Go 패키지를 컴파일 검증합니다 (현재 테스트 파일 없음). 클라이언트에는 자동화 테스트 스크립트가 없어 해당 단계는 명시적으로 건너뜁니다.
+
 ## 📊 주요 기능
 
 ### 1. 로그 생성 및 전송
@@ -140,8 +144,8 @@ npm run dev
 - Docker 컨테이너 로그 수집
 
 ### 3. 로그 조회 및 필터링
-- Next.js 클라이언트에서 로그 실시간 조회
-- 레벨별 필터링 (info, warn, error, debug)
+- Next.js 클라이언트에서 `/logs`의 샘플 응답을 주기적으로 조회
+- 샘플 로그의 레벨별 필터링 (info, warn, error, debug)
 - 로그 상세 정보 및 추가 필드 표시
 
 ### 4. 커스텀 로그 생성
@@ -161,7 +165,7 @@ npm run dev
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/` | 서버 상태 확인 |
-| GET | `/logs` | 저장된 로그 조회 |
+| GET | `/logs` | 매 요청마다 생성하는 샘플 로그 3개 조회 (Elasticsearch 조회 아님) |
 | POST | `/logs` | 커스텀 로그 전송 |
 | GET | `/generate-logs` | 샘플 로그 10개 생성 |
 
@@ -261,4 +265,4 @@ npm install
 
 ## 📄 라이선스
 
-이 프로젝트는 MIT 라이선스 하에 배포됩니다. 자세한 내용은 `LICENSE` 파일을 참조하세요.
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.

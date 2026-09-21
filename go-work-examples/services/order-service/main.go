@@ -12,10 +12,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/kyungseok-lee/go-work-examples/shared/config"
-	sharederrors "github.com/kyungseok-lee/go-work-examples/shared/errors"
-	"github.com/kyungseok-lee/go-work-examples/shared/events"
-	"github.com/kyungseok-lee/go-work-examples/shared/types"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/config"
+	sharederrors "github.com/kyungseok-lee/study/go-work-examples/shared/errors"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/events"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/types"
 )
 
 type OrderService struct {

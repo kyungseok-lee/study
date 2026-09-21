@@ -3,7 +3,6 @@
 > **Java/Go/Kotlin/TypeScript 개발자를 위한 Python 빠른 학습 가이드**
 
 [![Python](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
@@ -20,8 +19,8 @@
 
 ```bash
 # 1. 저장소 클론
-git clone https://github.com/kyungseok-lee/python-examples.git
-cd python-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/python-examples
 
 # 2. 가상환경 생성 및 활성화
 python -m venv .venv
@@ -134,4 +133,4 @@ python tools/validate_examples.py
 
 ## 📄 라이선스
 
-MIT License - 자유롭게 사용하세요!
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.

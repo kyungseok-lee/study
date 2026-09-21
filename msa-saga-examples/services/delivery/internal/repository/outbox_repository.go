@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/errors"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/events"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/errors"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/events"
 )
 
 // OutboxRepository 아웃박스 저장소 인터페이스

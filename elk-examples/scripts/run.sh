@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # ELK Stack Example 실행 스크립트
-# GitHub: https://github.com/kyungseok-lee/elk-examples
+# GitHub: https://github.com/kyungseok-lee/study/tree/main/elk-examples
 
 echo "🚀 ELK Stack Example 프로젝트를 시작합니다..."
-echo "📚 GitHub: https://github.com/kyungseok-lee/elk-examples"
+echo "📚 GitHub: https://github.com/kyungseok-lee/study/tree/main/elk-examples"
 echo ""
 
 # 로그 디렉토리 생성

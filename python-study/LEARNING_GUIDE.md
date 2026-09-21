@@ -299,8 +299,8 @@ Python 의 기본만 빠르게:
 
 ```bash
 # 1. 저장소 복제 또는 다운로드
-git clone <repo>
-cd python-study
+git clone https://github.com/kyungseok-lee/study.git
+cd study/python-study
 
 # 2. README 부터 읽기
 open README.md

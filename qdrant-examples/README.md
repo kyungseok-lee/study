@@ -4,7 +4,7 @@
 
 ## 📚 커리큘럼 개요
 
-이 프로젝트는 백엔드 전문가를 위한 체계적인 Qdrant 학습 과정을 제공합니다. 각 단계는 실무에서 바로 적용 가능한 프로덕션 수준의 코드와 베스트 프랙티스를 포함합니다.
+이 프로젝트는 백엔드 전문가를 위한 체계적인 Qdrant 학습 과정을 제공합니다. 단계 1·2·4는 실행 가능한 학습 코드, 단계 3은 API 골격, 단계 5는 TODO RAG 골격을 제공합니다. 인증·검색 라우터·LLM 연동과 자동화 테스트는 실습 과제입니다.
 
 ### 학습 목표
 - Qdrant 벡터 데이터베이스의 핵심 개념 이해
@@ -59,7 +59,7 @@
 ```python
 # 02-vector-search/search/semantic.py - 의미론적 검색
 # 02-vector-search/search/filters.py - 고급 필터링
-# 02-vector-search/search/hybrid.py - 하이브리드 검색
+# 하이브리드 검색 확장은 실습 과제
 ```
 
 ---
@@ -84,9 +84,9 @@
 #### 핵심 코드
 ```python
 # 03-production-api/app/main.py - FastAPI 애플리케이션
-# 03-production-api/app/routers/ - API 라우터들
-# 03-production-api/app/middleware/ - 커스텀 미들웨어
-# 03-production-api/app/models/ - Pydantic 모델들
+# 검색·벡터·컬렉션 라우터는 구현 예정
+# 로깅·CORS 미들웨어는 main.py에 포함
+# 요청·응답 모델은 구현 예정
 ```
 
 ---
@@ -157,8 +157,8 @@
 
 ```bash
 # 1. 레포지토리 클론
-git clone <repository-url>
-cd qdrant-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/qdrant-examples
 
 # 2. 가상환경 생성
 python -m venv venv
@@ -182,7 +182,7 @@ cp .env.example .env
 ```bash
 # 단계 1부터 시작
 cd 01-fundamentals
-python examples/basic_operations.py
+python examples/01_basic_connection.py
 
 # 각 단계의 README를 따라 진행
 cat README.md
@@ -190,40 +190,17 @@ cat README.md
 
 ## 📁 프로젝트 구조
 
-```
+```text
 qdrant-examples/
-├── 01-fundamentals/          # 기초 개념 및 기본 작업
-│   ├── core/                 # 핵심 라이브러리
-│   ├── examples/             # 실습 예제
-│   ├── tests/                # 단위 테스트
-│   └── README.md
-│
-├── 02-vector-search/         # 벡터 검색 및 필터링
-│   ├── search/               # 검색 알고리즘
-│   ├── examples/             # 실습 예제
-│   ├── tests/
-│   └── README.md
-│
-├── 03-production-api/        # 프로덕션 API 서버
-│   ├── app/                  # FastAPI 애플리케이션
-│   ├── tests/
-│   └── README.md
-│
-├── 04-optimization/          # 성능 최적화
-│   ├── benchmarks/           # 벤치마크 도구
-│   ├── caching/              # 캐싱 전략
-│   ├── monitoring/           # 모니터링
-│   └── README.md
-│
-├── 05-real-project/          # RAG 시스템 구현
-│   ├── rag/                  # RAG 파이프라인
-│   ├── api/                  # API 서버
-│   ├── tests/
-│   └── README.md
-│
-├── docker-compose.yml        # Qdrant 서버 설정
-├── requirements.txt          # Python 의존성
-└── README.md                 # 이 파일
+├── 01-fundamentals/       # core 라이브러리 + 실행 예제 5개
+├── 02-vector-search/     # search/filters.py, search/semantic.py
+├── 03-production-api/    # app/main.py: 상태·메트릭·문서 API 골격
+├── 04-optimization/      # benchmarks/, caching/, monitoring/
+├── 05-real-project/     # rag/pipeline.py: TODO 실습 골격
+├── monitoring/          # Prometheus/Grafana 설정
+├── docker-compose.yml
+├── requirements.txt
+└── .env.example
 ```
 
 ## 🛠 기술 스택
@@ -257,7 +234,7 @@ qdrant-examples/
 
 ### 각 단계별 학습 팁
 - ✅ 코드 실행 전 README 숙독
-- ✅ 제공된 테스트 코드 분석
+- ✅ 예제에 대한 테스트 코드 작성 (현재 Qdrant 테스트 디렉터리는 없음)
 - ✅ 예제를 자신의 유스케이스에 맞게 수정
 - ✅ 성능 메트릭 측정 및 비교
 - ✅ 프로덕션 체크리스트 확인
@@ -290,7 +267,7 @@ qdrant-examples/
 
 ## 📝 라이센스
 
-MIT License
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.
 
 ## 🔗 참고 자료
 

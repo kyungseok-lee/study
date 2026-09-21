@@ -7,8 +7,8 @@ import (
 	"strconv"
 
 	"github.com/google/uuid"
-	commonerrors "github.com/kyungseok-lee/msa-saga-go-examples/common/errors"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/order/internal/service"
+	commonerrors "github.com/kyungseok-lee/study/msa-saga-examples/common/errors"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/order/internal/service"
 	"go.uber.org/zap"
 )
 

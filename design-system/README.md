@@ -7,7 +7,7 @@ Cross-platform design system for **Mobile App**, **Mobile Web**, and **PC Web**.
 ### Fastest Way — All-in-One
 
 ```html
-<link rel="stylesheet" href="@myorg/design-system/css/all.css">
+<link rel="stylesheet" href="./dist/css/all.css">
 ```
 
 This single file includes everything: tokens, reset, utilities, animations, layouts, and all 20 components.
@@ -79,17 +79,19 @@ import lightTokens from '@myorg/design-system/tokens/semantic/light';
 
 ## Install
 
+The package is developed in the `study/design-system` subdirectory. Build it locally before using the example page or installing it into another project:
+
 ```bash
-npm install @myorg/design-system
+git clone https://github.com/kyungseok-lee/study.git
+cd study/design-system
+npm run build
+npm test
+open examples/index.html
 ```
 
-Requires Node.js 16+ for local builds.
+From a consuming project, install the built local directory with `npm install /absolute/path/to/study/design-system`, or run `npm link` in this directory and then `npm link @myorg/design-system` in the consumer. The package name is `@myorg/design-system`; this repository does not establish that it has been published to the npm registry.
 
-| Method | Command | Use Case |
-|---|---|---|
-| npm | `npm install @myorg/design-system` | Production |
-| git submodule | `git submodule add <repo-url>` | Source access |
-| npm link | `npm link @myorg/design-system` | Local dev |
+The plain HTML example above assumes an HTML file in this directory after building. Package imports in the CSS/SCSS/JS examples require a bundler or package resolver. Requires Node.js 16+ for local builds.
 
 ## Dark Mode
 
@@ -142,12 +144,12 @@ Interactive components support `:hover`, `:focus-visible`, and `:disabled` state
 <div class="ds-animate-spin">Spinning</div>
 ```
 
-12 animations available: fade-in/out, slide-up/down/left/right, scale-in/out, spin, pulse, bounce.
+12 keyframes are available: fade-in/out, slide-up/down/left/right, scale-in/out, spin, pulse, bounce, and the internal skeleton wave.
 Automatically disabled when user prefers reduced motion.
 
 ## Tokens
 
-**288 design tokens** across 9 primitive categories + semantic layer:
+**292 token values**: 192 primitive values + 50 semantic values per light/dark theme (242 distinct CSS variable names), across 9 primitive categories and the semantic layer:
 
 - **Colors**: 9 palettes (neutral, mocha, terracotta, teal, sage, blue, red, green, amber) × 10 shades
 - **Typography**: font families, 10 sizes, 4 weights, line heights, letter spacing
@@ -165,6 +167,7 @@ Available as: CSS variables, SCSS, JSON, ESM JS, CJS, TypeScript, W3C DTCG.
 
 ```bash
 npm run build    # Zero dependencies — pure Node.js
+npm test         # 25 checks including rebuild/failure guards
 ```
 
 ## AI-Assisted Contribution (Optional)

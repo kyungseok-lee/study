@@ -30,10 +30,13 @@ class ReactiveApplicationTests @Autowired constructor(
         @DynamicPropertySource
         fun mongodbProperties(registry: DynamicPropertyRegistry) {
             if (externalUri != null) {
-                val uri = java.net.URI(externalUri.removePrefix("mongodb://"))
+                val uri = java.net.URI(externalUri)
+                require(uri.scheme == "mongodb" && uri.host != null) {
+                    "MONGODB_TEST_URI must be a mongodb://host[:port] URI"
+                }
                 registry.add("spring.data.mongodb.host") { uri.host }
                 registry.add("spring.data.mongodb.port") { (if (uri.port > 0) uri.port else 27017).toString() }
-                println("[MONGO-TEST] using external MongoDB at ${uri.host}:${uri.port}")
+                println("[MONGO-TEST] using external MongoDB at ${uri.host}:${if (uri.port > 0) uri.port else 27017}")
             } else {
                 registry.add("spring.data.mongodb.host") { EmbeddedMongo.host }
                 registry.add("spring.data.mongodb.port") { EmbeddedMongo.port.toString() }

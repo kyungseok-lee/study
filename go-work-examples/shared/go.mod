@@ -1,4 +1,4 @@
-module github.com/kyungseok-lee/go-work-examples/shared
+module github.com/kyungseok-lee/study/go-work-examples/shared
 
 go 1.24.0
 

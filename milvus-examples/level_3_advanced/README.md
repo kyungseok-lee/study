@@ -1,5 +1,7 @@
 # Level 3: Milvus 고급 (Advanced)
 
+> 현재 구현 범위: 아래 Python 파일들은 학습 계획이며 아직 커밋되어 있지 않습니다. 실행 가능한 예제는 `level_1_basics/`, `level_2_intermediate/` 및 `projects/multi_tenant_search.py`에 있습니다.
+
 ## 학습 목표
 
 대규모 운영 환경 구축 및 성능 튜닝 전문가가 된다.
@@ -13,7 +15,7 @@
 ## 📚 학습 내용
 
 ### 1. Performance Tuning
-**파일**: `01_performance_tuning.py`
+**구현 예정 파일**: `01_performance_tuning.py`
 
 **학습 내용**:
 - Query 최적화
@@ -30,7 +32,7 @@
 ---
 
 ### 2. Monitoring & Metrics
-**파일**: `02_monitoring_metrics.py`
+**구현 예정 파일**: `02_monitoring_metrics.py`
 
 **학습 내용**:
 - Prometheus 메트릭 수집
@@ -47,7 +49,7 @@
 ---
 
 ### 3. High Availability
-**파일**: `03_high_availability.py`
+**구현 예정 파일**: `03_high_availability.py`
 
 **학습 내용**:
 - 클러스터 구성
@@ -64,7 +66,7 @@
 ---
 
 ### 4. Scalability Patterns
-**파일**: `04_scalability_patterns.py`
+**구현 예정 파일**: `04_scalability_patterns.py`
 
 **학습 내용**:
 - Horizontal scaling

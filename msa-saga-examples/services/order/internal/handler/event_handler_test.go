@@ -7,12 +7,12 @@ import (
 	"testing"
 	"time"
 
-	commonerrors "github.com/kyungseok-lee/msa-saga-go-examples/common/errors"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/events"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/idempotency"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/messaging"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/order/internal/domain"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/order/internal/service"
+	commonerrors "github.com/kyungseok-lee/study/msa-saga-examples/common/errors"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/events"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/idempotency"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/messaging"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/order/internal/domain"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/order/internal/service"
 	"go.uber.org/zap"
 )
 

@@ -79,12 +79,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/kyungseok-lee/design-system.git"
+    "url": "git+https://github.com/kyungseok-lee/study.git",
+    "directory": "design-system"
   },
   "bugs": {
-    "url": "https://github.com/kyungseok-lee/design-system/issues"
+    "url": "https://github.com/kyungseok-lee/study/issues"
   },
-  "homepage": "https://github.com/kyungseok-lee/design-system#readme",
+  "homepage": "https://github.com/kyungseok-lee/study/tree/main/design-system#readme",
   "engines": {
     "node": ">=16.0.0"
   }

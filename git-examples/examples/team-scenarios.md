@@ -436,7 +436,7 @@ check_pr_template() {
         gh pr comment $pr_number --body "
 ⚠️ PR 템플릿을 사용해주세요.
 
-템플릿 가이드: [PR 가이드](docs/pr-template.md)
+템플릿 가이드: [PR 가이드](https://github.com/kyungseok-lee/study/blob/main/git-examples/examples/github-pr-guide.md)
 "
         gh pr edit $pr_number --add-label "template-missing"
     fi

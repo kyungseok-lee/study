@@ -19,8 +19,8 @@
 ### 1. 프로젝트 클론
 
 ```bash
-git clone <repository-url>
-cd qdrant-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/qdrant-examples
 ```
 
 ### 2. 가상환경 설정
@@ -179,7 +179,7 @@ python monitoring/metrics.py
 cd 05-real-project
 
 # RAG 파이프라인 테스트
-python rag/pipeline.py
+python rag/pipeline.py  # TODO 골격: 실제 임베딩/검색/LLM 호출은 아직 없음
 ```
 
 ## 🛠 문제 해결

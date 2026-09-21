@@ -6,10 +6,10 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/errors"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/events"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/delivery/internal/domain"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/delivery/internal/repository"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/errors"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/events"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/delivery/internal/domain"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/delivery/internal/repository"
 	"go.uber.org/zap"
 )
 

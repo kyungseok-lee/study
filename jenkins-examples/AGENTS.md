@@ -4,7 +4,7 @@
 
 This repository is a beginner-focused Jenkins Pipeline examples collection. Each numbered directory contains one standalone `Jenkinsfile`:
 
-- `01-hello-world/` through `08-docker-pipeline/`: progressive Declarative Pipeline examples.
+- `01-hello-world/` through `09-pipeline-options/`: progressive Declarative Pipeline examples.
 - `README.md`: learning order, glossary, and basic usage.
 - `GUIDE.md`: Jenkins Pipeline syntax and beginner reference.
 
@@ -34,6 +34,6 @@ Before changing or adding a `Jenkinsfile`, run it through the Jenkins Declarativ
 
 ## Commit & Pull Request Guidelines
 
-The current history only contains `init`, so use concise imperative commit subjects going forward, for example `Add post actions example` or `Clarify Docker pipeline comments`.
+This collection is part of the study monorepo. Use concise imperative commit subjects, for example `Add post actions example` or `Clarify Docker pipeline comments`.
 
 Pull requests should describe the learning goal, list changed example directories, and note how the Jenkinsfile was validated. Include screenshots or console excerpts when behavior changes in Jenkins UI output.

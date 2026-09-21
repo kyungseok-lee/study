@@ -16,23 +16,23 @@ graph TB
     B -->|1일 (특정 날짜 1개)| C[단일 실행<br/>Trigger w/ Logical Date]
     B -->|여러 일치| D[백필 사용]
     D --> E{언제?}
-    E -->|DAG 처음 만들 때 자동| F[catchup=True<br/>스케줄러가 자동 채움]
-    E -->|이미 운영 중인 DAG에서| G[Web UI Backfill 모달<br/>또는 CLI airflow dags backfill]
+    E -->|누락된 스케줄 구간 자동 채움| F[catchup=True<br/>스케줄러가 자동 채움]
+    E -->|이미 운영 중인 DAG에서| G[3.0+ Web UI 또는<br/>2.9.3 CLI airflow dags backfill]
 ```
 
 | 방식 | 트리거 | 용도 |
 |------|--------|------|
 | 단일 실행 | ▶ Trigger DAG | 1개 DAGRun |
-| catchup=True | DAG 켜면 자동 | 새 DAG 최초 1회 자동 채움 |
-| Web UI Backfill | ⟳ Backfill 버튼 | 운영 중 DAG의 과거 다시 채움 |
+| catchup=True | DAG 켜면 자동 | 새 DAG 또는 일시정지 이후 누락된 구간 자동 채움 |
+| Web UI Backfill (3.0+) | Trigger → Backfill | 운영 중 DAG의 과거 다시 채움 |
 | CLI backfill | `airflow dags backfill` | 동일 (스크립트화 가능) |
 
-> ⚠️ **본 학습 환경(Airflow 2.9.3)에는 Web UI Backfill 모달이 없습니다.** 모달은 **2.10+** 부터 도입되었으므로 아래 "Web UI Backfill 모달" 절은 2.10 이상 환경 사용자를 위한 참고 자료입니다.
-> **2.9.3 사용자는 [CLI 방식](#cli-방식-모든-버전-가능) 절로 바로 넘어가세요.**
+> ⚠️ **본 학습 환경(Airflow 2.9.3)에는 Web UI Backfill 모달이 없습니다.** 모달은 **3.0+** 부터 도입되었으므로 아래 "Web UI Backfill 모달" 절은 3.0 이상 환경 사용자를 위한 참고 자료입니다.
+> **2.9.3 사용자는 [CLI 방식](#cli-방식-airflow-293--2x) 절로 바로 넘어가세요.**
 
-## Web UI Backfill 모달 (Airflow 2.10+ 전용 — 2.9에는 없음)
+## Web UI Backfill 모달 (Airflow 3.0+ 전용 — 2.9에는 없음)
 
-DAG 상세 화면 우측 상단의 ⟳ **Backfill** 버튼 클릭.
+Airflow 3.0 이상에서는 DAG 상세 화면의 **Trigger** 드롭다운에서 **Backfill**을 선택합니다. 아래 화면은 옵션을 설명하는 개략도입니다. 버전별 UI는 [공식 백필 문서](https://airflow.apache.org/docs/apache-airflow/3.0.0/core-concepts/backfill.html)를 참고하세요. Airflow 3의 CLI는 `airflow backfill create`이며 아래 2.9.3 명령과 다릅니다.
 
 ```
 ┌────────────────────────────────────────────────────────────┐
@@ -65,7 +65,7 @@ DAG 상세 화면 우측 상단의 ⟳ **Backfill** 버튼 클릭.
 | **Max Active Runs** | 한 번에 동시 실행할 DAGRun 개수 (DB 부하 제어) |
 | **Dry Run** | 실제 실행하지 않고 어떤 DAGRun이 만들어질지만 보여줌 |
 
-## CLI 방식 (모든 버전 가능)
+## CLI 방식 (Airflow 2.9.3 / 2.x)
 
 ```bash
 docker compose exec airflow-scheduler \
@@ -115,27 +115,23 @@ logical_date         start  ext   load
 `max_active_runs=1`이면 한 번에 1개만 실행 → **순차 백필** (안전, 느림).
 `max_active_runs=8`이면 8개 동시 실행 → **병렬 백필** (빠름, 데이터 충돌 주의).
 
-DAG 정의에서 설정한 값이 기본값입니다.
+2.9.3 CLI의 기본 동시성은 DAG의 `max_active_runs`를 따릅니다. Airflow 3.0+에서는 백필의 `max_active_runs`를 DAG와 별도로 설정합니다.
 
 ```python
 with DAG(..., max_active_runs=1):  # ← 백필 시 동시성 상한
     ...
 ```
 
-## 백필 진행 도중 멈추기
+## 상태 확인과 재실행
 
-UI에서 백필 중인 DAGRun들의 상태를 한 번에 변경:
-
-1. Grid View에서 백필 컬럼들을 Shift-Click으로 다중 선택
-2. 우측 패널 "Mark as ..." → **failed** 또는 직접 Pause
-3. 또는 DAG 토글을 OFF로 → Scheduler가 새 Task를 큐잉하지 않음
-
-CLI로 강제 종료:
+DAG Pause는 실행 중인 프로세스를 강제 종료하지 않습니다. `airflow dags state`는 상태 조회, `airflow tasks clear`는 태스크 상태 초기화와 재실행을 위한 명령입니다. Clear를 중단 명령으로 사용하지 마세요.
 
 ```bash
+# Airflow 2.9.3: 상태 조회
 docker compose exec airflow-scheduler \
   airflow dags state 04_backfill_demo 2026-04-05T00:00:00+00:00
-# 상태 조회 후 필요시
+
+# 다시 실행하려는 경우에만 상태 초기화
 docker compose exec airflow-scheduler \
   airflow tasks clear 04_backfill_demo --start-date 2026-04-05 --end-date 2026-04-15 -y
 ```
@@ -144,7 +140,7 @@ docker compose exec airflow-scheduler \
 
 ### Q1. catchup=True인데 백필 모달은 또 왜 필요한가요?
 
-`catchup=True`는 DAG **최초 켜질 때** 한 번 자동 채우기 위한 옵션. 이미 운영 중인 DAG에서 과거를 다시 돌리려면 백필 모달/CLI를 사용합니다.
+`catchup=True`는 스케줄러가 아직 실행되지 않은 데이터 구간을 채우도록 합니다. 최초 활성화뿐 아니라 일시정지 후 재개할 때도 적용됩니다. 이미 완료한 구간을 다시 처리하거나 범위를 직접 지정하려면 현재 2.9.3 환경의 CLI 백필/태스크 Clear 또는 3.0+의 백필 UI를 사용합니다.
 
 ### Q2. logical_date 과거 1개로 ▶ Trigger w/ config 하면 안 되나요?
 
@@ -161,7 +157,7 @@ Scheduler가 다음 사이클에 새 코드로 다시 파싱합니다. **이미 
 
 ### Q4. 백필 도중 일부만 실패했을 때 다시 돌리려면?
 
-방법 1) 같은 백필 명령을 다시 돌리고 Reprocess Behavior = **Failed** 선택.
+방법 1) 2.9.3 CLI에서는 `--rerun-failed-tasks`를 사용합니다. Airflow 3.0+ UI에서는 Reprocess Behavior = **Failed**를 선택합니다.
 방법 2) Grid View에서 실패한 셀들을 선택 → **Clear** → Scheduler가 자동 재시도.
 
 자세한 시나리오는 [18. 실전 시나리오](18-실전시나리오.md) 참고.

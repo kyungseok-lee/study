@@ -11,7 +11,7 @@ public class MemberDto {
     public MemberDto() {
     }
 
-    //querydsl - QMemberDto 생성 - ./gradlew compileQuerydsl
+    //querydsl - QMemberDto 생성 - gradle compileQuerydsl
     @QueryProjection
     public MemberDto(String username, int age) {
         this.username = username;

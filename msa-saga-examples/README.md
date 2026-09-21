@@ -6,22 +6,22 @@
 
 ## 📋 목차
 
-- [프로젝트 개요](#프로젝트-개요)
-- [아키텍처](#아키텍처)
+- [프로젝트 개요](#-프로젝트-개요)
+- [아키텍처](#-아키텍처)
 - [기술 스택](#기술-스택)
-- [프로젝트 구조](#프로젝트-구조)
-- [시작하기](#시작하기)
-- [핵심 패턴](#핵심-패턴)
-- [API 사용법](#api-사용법)
-- [트러블슈팅](#트러블슈팅)
-- [성능 최적화](#성능-최적화)
+- [프로젝트 구조](#-프로젝트-구조)
+- [시작하기](#-시작하기)
+- [핵심 패턴](#-핵심-패턴)
+- [API 사용법](#-api-사용법)
+- [트러블슈팅](#-트러블슈팅)
+- [성능 최적화](#-성능-최적화)
 
 ## 🎯 프로젝트 개요
 
 이 프로젝트는 전자상거래 주문 시나리오를 통해 다음을 실습합니다:
 
 - **Choreography 패턴**: 이벤트 기반 분산 조정
-- **Orchestration 패턴**: 중앙 집중식 워크플로우 (Temporal)
+- **Orchestration 확장 환경**: Temporal 서버와 UI를 제공하며 Go 워크플로우·워커 구현은 아직 없습니다.
 - **Outbox 패턴**: 트랜잭션과 메시지 발행의 원자성 보장
 - **보상 트랜잭션**: 실패 시 상태 복구
 - **멱등성 설계**: 중복 처리 방지
@@ -60,7 +60,7 @@
 | **언어** | Go 1.23 |
 | **데이터베이스** | PostgreSQL 16 |
 | **캐시/멱등성** | Redis 7 |
-| **메시지 브로커** | Kafka 3.6 (Bitnami) |
+| **메시지 브로커** | Confluent Kafka 7.5.0 이미지 |
 | **워크플로우 엔진** | Temporal 1.24 |
 | **컨테이너** | Docker, Docker Compose |
 | **모니터링** | Kafka UI, Temporal UI |
@@ -98,7 +98,7 @@ msa-saga-examples/
 │   ├── init-inventory-db.sql
 │   └── init-delivery-db.sql
 │
-├── docker compose.yml         # 전체 인프라 정의
+├── docker-compose.yml         # 전체 인프라 정의
 ├── Makefile                   # 빌드/실행 스크립트
 └── README.md
 ```
@@ -114,8 +114,8 @@ msa-saga-examples/
 ### 1. 프로젝트 클론
 
 ```bash
-git clone <repository-url>
-cd msa-saga-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/msa-saga-examples
 ```
 
 ### 2. 인프라 시작
@@ -448,30 +448,24 @@ make check-redis
 
 ## 🧪 테스트
 
-> ⚠️ 아직 자동화된 테스트 코드(`*_test.go`)는 없습니다. 아래 명령은 테스트 추가 시 사용 가능한 형태이며, 현재는 `go build ./...`로 전체 컴파일을 검증할 수 있습니다.
+`common/errors`, 주문 도메인 상태 전이, 주문 이벤트 핸들러의 단위 테스트가 있습니다. `go build ./...`와 `go test ./...`는 Docker 없이 실행할 수 있습니다.
 
-### 단위 테스트 (작성 예정)
+### 단위 테스트
 
 ```bash
 # 전체 테스트 실행
 go test ./...
 
 # 특정 패키지 테스트
-go test ./services/order/internal/service/...
+go test ./services/order/internal/handler/...
 
 # 커버리지 확인
 go test -cover ./...
 ```
 
-### 통합 테스트 (작성 예정)
+### 통합 검증
 
-```bash
-# 환경 시작
-docker compose up -d
-
-# E2E 테스트 실행
-go test ./tests/e2e/... -v
-```
+자동 E2E 테스트 디렉터리는 아직 없습니다. `docker compose up -d`로 환경을 시작한 뒤 [빠른 시작](QUICKSTART.md)의 성공·재고 부족·멱등성 시나리오를 수동 실행하세요.
 
 ## 📈 확장 포인트
 
@@ -491,7 +485,7 @@ go test ./tests/e2e/... -v
 
 ## 📝 라이센스
 
-MIT License
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.
 
 ## 📚 참고 자료
 

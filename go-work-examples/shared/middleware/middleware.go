@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/kyungseok-lee/go-work-examples/shared/logger"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/logger"
 )
 
 // RequestLogger creates a request logging middleware

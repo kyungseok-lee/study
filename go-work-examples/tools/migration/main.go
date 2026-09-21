@@ -9,7 +9,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
-	"github.com/kyungseok-lee/go-work-examples/shared/types"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/types"
 )
 
 type Migration struct {

@@ -5,12 +5,12 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/kyungseok-lee/go-work-examples/shared/config"
-	"github.com/kyungseok-lee/go-work-examples/shared/errors"
-	"github.com/kyungseok-lee/go-work-examples/shared/events"
-	"github.com/kyungseok-lee/go-work-examples/shared/logger"
-	"github.com/kyungseok-lee/go-work-examples/shared/types"
-	"github.com/kyungseok-lee/go-work-examples/shared/utils"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/config"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/errors"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/events"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/logger"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/types"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/utils"
 )
 
 // WorkspaceDemo demonstrates the power of Go workspaces
@@ -120,7 +120,7 @@ func main() {
 	fmt.Println("✓ Unified error handling with proper HTTP status codes")
 	fmt.Println("✓ Type-safe event system with shared data structures")
 	fmt.Println("✓ Common validation utilities")
-	fmt.Println("✓ No replace directives needed - direct local module references")
+	fmt.Println("✓ Workspace module resolution with standalone replace fallback")
 	fmt.Println("✓ Single workspace for all related projects")
 	fmt.Println("✓ Consistent dependency versions across all modules")
 	fmt.Println("✓ Easy refactoring across the entire codebase")

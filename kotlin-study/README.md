@@ -30,7 +30,7 @@
     val str = "ABC"
     println(str[2])
     
-    ==== 동일성 (java ==)
+    === 동일성 (java ==)
     == 동등성 (java equals)
     
     in , !in

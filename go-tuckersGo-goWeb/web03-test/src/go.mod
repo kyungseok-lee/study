@@ -1,4 +1,4 @@
-module github.com/kyungseok-lee/learn-go-web
+module github.com/kyungseok-lee/study/go-tuckersGo-goWeb/web03-test/src
 
 go 1.14
 

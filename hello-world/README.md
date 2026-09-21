@@ -20,12 +20,12 @@
 
 ## 🚀 시작하기
 ```bash
-git clone https://github.com/yourusername/hello-world.git
-cd hello-world
+git clone https://github.com/kyungseok-lee/study.git
+cd study/hello-world
 ```
 
 ## 📝 라이선스
-이 프로젝트는 MIT 라이선스를 따릅니다.
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.
 
 ---
 *이 저장소는 심심할 때마다 업데이트됩니다. 언제 업데이트될지는 아무도 모릅니다! 😉*

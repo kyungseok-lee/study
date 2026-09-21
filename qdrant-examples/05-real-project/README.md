@@ -1,6 +1,8 @@
 # 단계 5: 실전 프로젝트 - RAG 시스템
 
-> Retrieval-Augmented Generation 완전 구현
+> Retrieval-Augmented Generation 구현 실습
+
+현재 파일은 `rag/pipeline.py` 하나입니다. `ingest_documents()`는 처리 개수와 0개의 청크/벡터를 반환하고, `query()`는 `TODO: 구현 필요` 응답을 반환합니다. 아래 청킹·임베딩·검색·LLM·API·테스트 구조와 예시는 앞으로 구현할 목표이며 실행 완료 상태가 아닙니다.
 
 ## 📚 학습 목표
 
@@ -10,7 +12,7 @@
 - LLM 통합 (OpenAI, Anthropic)
 - 답변 품질 평가 및 개선
 
-## 🏗 프로젝트 구조
+## 🏗 구현 목표 구조
 
 ```
 05-real-project/

@@ -6,9 +6,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/kyungseok-lee/go-work-examples/shared/events"
-	"github.com/kyungseok-lee/go-work-examples/shared/types"
-	"github.com/kyungseok-lee/go-work-examples/shared/utils"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/events"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/types"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/utils"
 )
 
 // Example demonstrating how to consume the shared library

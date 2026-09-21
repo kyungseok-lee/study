@@ -17,12 +17,12 @@ import (
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
 
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/idempotency"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/logger"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/messaging"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/payment/internal/handler"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/payment/internal/repository"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/payment/internal/service"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/idempotency"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/logger"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/messaging"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/payment/internal/handler"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/payment/internal/repository"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/payment/internal/service"
 )
 
 func main() {

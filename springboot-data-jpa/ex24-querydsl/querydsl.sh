@@ -1,2 +1,2 @@
-echo "./gradlew clean compileQuerydsl"
-./gradlew clean compileQuerydsl
+echo "gradle clean compileQuerydsl"
+gradle clean compileQuerydsl

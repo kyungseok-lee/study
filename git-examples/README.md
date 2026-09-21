@@ -237,7 +237,7 @@ gh pr create --title "feat: 사용자 로그인 기능 구현" --body "상세 �
 
 ## 📝 라이선스
 
-MIT License - 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.
 
 ## 📞 지원
 

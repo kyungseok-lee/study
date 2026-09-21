@@ -10,7 +10,13 @@
 - API 문서화 및 테스팅
 - 에러 핸들링 및 로깅
 
-## 🏗 프로젝트 구조
+## 현재 실행 가능한 기능
+
+현재 `app/main.py`만 구현되어 있습니다. `cd 03-production-api && python app/main.py`로 시작하면 `/`, `/health`, `/metrics`, `/docs`, `/redoc`를 제공합니다. 요청 로깅·CORS·전역 예외 처리가 포함되며 검색/CRUD 라우터·인증·레이트 리미팅·테스트는 아직 없습니다.
+
+아래 구조, 비즈니스 API, 코드와 cURL 예제는 앞으로 구현할 설계입니다.
+
+## 🏗 구현 목표 구조
 
 ```
 03-production-api/
@@ -37,7 +43,7 @@
     └── test_api.py
 ```
 
-## 🚀 API 엔드포인트
+## 🚀 API 설계 (모니터링 외 구현 예정)
 
 ### 컬렉션 관리
 ```
@@ -70,7 +76,7 @@ GET    /metrics                         # Prometheus 메트릭
 GET    /docs                            # API 문서 (Swagger)
 ```
 
-## 📖 주요 기능
+## 📖 구현 과제 예시
 
 ### 1. 비동기 처리
 
@@ -123,7 +129,7 @@ async def dimension_mismatch_handler(request, exc):
     )
 ```
 
-## 🧪 API 테스트
+## 🧪 비즈니스 API 구현 후 테스트
 
 ### cURL 예제
 ```bash

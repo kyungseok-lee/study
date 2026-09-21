@@ -128,7 +128,7 @@ pipeline {
 2. 프로젝트 이름 입력 > Pipeline 선택
 3. Pipeline 섹션 > Definition: "Pipeline script from SCM"
 4. SCM(Git 등) 선택 > 저장소 URL 입력
-5. Script Path: `Jenkinsfile` > Save
+5. 저장소 `https://github.com/kyungseok-lee/study.git`, 브랜치 `*/main`, Script Path: `jenkins-examples/01-hello-world/Jenkinsfile` > Save
 
 ## 검증 방법
 

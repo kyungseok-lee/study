@@ -1,11 +1,11 @@
-module github.com/kyungseok-lee/go-work-examples/services/order-service
+module github.com/kyungseok-lee/study/go-work-examples/services/order-service
 
 go 1.24.0
 
 require (
 	github.com/gin-gonic/gin v1.10.1
 	github.com/google/uuid v1.6.0
-	github.com/kyungseok-lee/go-work-examples/shared v0.0.0-20250908215140-e8331dc2750b
+	github.com/kyungseok-lee/study/go-work-examples/shared v0.0.0
 )
 
 require (
@@ -28,7 +28,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
-	github.com/stretchr/testify v1.11.1 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.3.0 // indirect
 	golang.org/x/arch v0.21.0 // indirect
@@ -40,4 +39,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace github.com/kyungseok-lee/go-work-examples/shared => ../../shared
+replace github.com/kyungseok-lee/study/go-work-examples/shared => ../../shared

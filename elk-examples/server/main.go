@@ -62,7 +62,6 @@ func main() {
 	app := fiber.New(fiber.Config{
 		AppName:      "ELK Example Server",
 		ServerHeader: "ELK-Example-Server",
-		AppVersion:   "1.0.0",
 	})
 
 	// 미들웨어 설정
@@ -79,7 +78,7 @@ func main() {
 			"message": "ELK Example Server is running",
 			"version": "1.0.0",
 			"time":    time.Now().Format(time.RFC3339),
-			"github":  "https://github.com/kyungseok-lee/elk-examples",
+			"github":  "https://github.com/kyungseok-lee/study/tree/main/elk-examples",
 		})
 	})
 

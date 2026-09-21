@@ -112,8 +112,9 @@ Level 1 (기초) → Level 2 (중급) → Level 3 (고급) → Level 4 (실전)
 ### 빠른 시작
 
 ```bash
-# 1. 저장소 클론 (이미 완료)
-cd milvus-examples
+# 1. 저장소 클론
+git clone https://github.com/kyungseok-lee/study.git
+cd study/milvus-examples
 
 # 2. 가상환경 생성
 python -m venv venv
@@ -140,62 +141,21 @@ python 01_connection_setup.py
 
 ## 📁 프로젝트 구조
 
-```
+```text
 milvus-examples/
-├── README.md                    # 메인 가이드
-├── requirements.txt             # Python 패키지
-├── setup.py                     # 프로젝트 설정
-├── docker-compose.yml           # Milvus + 부가 서비스
-├── .env.example                 # 환경변수 템플릿
-├── pytest.ini                   # 테스트 설정
-│
-├── config/                      # 설정 파일
-│   ├── __init__.py
-│   ├── settings.py             # 전역 설정
-│   └── logging.yaml            # 로깅 설정
-│
-├── utils/                       # 공통 유틸리티
-│   ├── __init__.py
-│   ├── connection.py           # 연결 관리 (Pool, Retry)
-│   ├── logger.py               # 구조화된 로깅
-│   ├── decorators.py           # 재시도, 타이밍 등
-│   └── exceptions.py           # 커스텀 예외
-│
-├── level_1_basics/              # Level 1: 기초
-│   ├── README.md
-│   ├── 01_connection_setup.py
-│   ├── 02_collection_management.py
-│   ├── 03_data_insertion.py
-│   ├── 04_basic_search.py
-│   └── tests/
-│
-├── level_2_intermediate/        # Level 2: 중급
-│   ├── README.md
-│   ├── 01_advanced_search.py
-│   ├── 02_partition_management.py
-│   ├── 03_index_optimization.py
-│   ├── 04_data_migration.py
-│   └── tests/
-│
-├── level_3_advanced/            # Level 3: 고급
-│   ├── README.md
-│   ├── 01_performance_tuning.py
-│   ├── 02_monitoring_metrics.py
-│   ├── 03_high_availability.py
-│   ├── 04_scalability_patterns.py
-│   └── tests/
-│
-└── level_4_production/          # Level 4: 실전
-    ├── README.md
-    ├── semantic_search_service/
-    │   ├── api/
-    │   ├── core/
-    │   ├── tests/
-    │   └── docker-compose.yml
-    ├── recommendation_engine/
-    │   └── ...
-    └── image_similarity_search/
-        └── ...
+├── config/                 # 설정, Prometheus/Grafana 설정
+├── utils/                  # 연결, 로깅, 예외, 데코레이터
+├── level_1_basics/          # 연결·컬렉션·삽입·검색 Python 예제 4개
+├── level_2_intermediate/    # 검색·파티션·인덱스·마이그레이션 예제 4개
+├── level_3_advanced/        # README 학습 계획 (코드 추가 예정)
+├── level_4_production/      # README 프로젝트 설계 (구현 예정)
+├── projects/multi_tenant_search.py  # 멀티테넌트 검색 예제
+├── tests/test_units.py      # 현재 자동화 단위 테스트
+├── docker-compose.yml
+├── requirements.txt
+├── setup.py
+├── pytest.ini
+└── .env.example
 ```
 
 ---
@@ -206,8 +166,8 @@ milvus-examples/
 # 전체 테스트 실행
 pytest
 
-# 특정 레벨 테스트
-pytest level_1_basics/tests/
+# 현재 단위 테스트 파일
+pytest tests/test_units.py
 
 # 커버리지 리포트
 pytest --cov=. --cov-report=html
@@ -254,7 +214,7 @@ pytest --cov=. --cov-report=html
 
 ## 📝 라이선스
 
-MIT License
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.
 
 ---
 

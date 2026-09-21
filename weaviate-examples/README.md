@@ -31,7 +31,6 @@ weaviate-examples/
 │   └── 03-advanced/            # 고급: RAG, 멀티테넌시, 최적화
 ├── project/                     # 실전 프로젝트
 │   ├── app/                    # FastAPI 백엔드 애플리케이션
-│   ├── tests/                  # 테스트 코드
 │   └── docker-compose.yml      # Docker 설정
 └── utils/                       # 공통 유틸리티
 ```
@@ -44,8 +43,8 @@ weaviate-examples/
 
 ```bash
 # 저장소 클론
-git clone <repository-url>
-cd weaviate-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/weaviate-examples
 
 # 가상 환경 생성 및 활성화
 python -m venv venv
@@ -63,8 +62,8 @@ cp .env.example .env
 
 ```bash
 # 저장소 클론
-git clone <repository-url>
-cd weaviate-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/weaviate-examples
 
 # uv 설치 (아직 설치하지 않은 경우)
 # macOS/Linux:
@@ -218,7 +217,7 @@ python 01_connection.py
 
 ## 📄 라이선스
 
-MIT License
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.
 
 ## 📞 문의
 

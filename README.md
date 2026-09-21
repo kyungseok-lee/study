@@ -11,7 +11,7 @@
 | 디렉터리 | 설명 |
 |---|---|
 | `go-work-examples/` | Go Workspace 기반 마이크로서비스 예제 (user/order/notification 서비스, CLI 도구) |
-| `msa-saga-examples/` | Kafka + Outbox 패턴 Choreography SAGA 구현 (PostgreSQL ×4, Redis, Temporal) |
+| `msa-saga-examples/` | Kafka + Outbox 패턴 Choreography SAGA 구현 (서비스용 PostgreSQL ×4 + Temporal용 ×1, Redis, Temporal) |
 | `go-tuckersGo-goWeb/` | Go 웹 프로그래밍 튜토리얼 3개 독립 모듈 |
 
 ### Python
@@ -56,7 +56,7 @@
 | `milvus-examples/`, `qdrant-examples/`, `weaviate-examples/` | 벡터 DB 실습 (Docker Compose) |
 | `k8s-study/`, `k8s-lecture-starter/` | Kubernetes 매니페스트·강의 노트 (`09-troubleshooting`은 고의로 깨진 교육용 예제) |
 | `docker-study/`, `docker-examples/` | Docker 기초 및 응용 |
-| `jenkins-examples/` | Jenkins Pipeline 예제 8종 (`scripts/validate-jenkinsfiles.sh` 검증 스크립트) |
+| `jenkins-examples/` | Jenkins Pipeline 예제 9종 (`scripts/validate-jenkinsfiles.sh` 검증 스크립트) |
 | `git-examples/`, `shell-study/` | Git / 셸 스크립트 연습 |
 | `hello-world/` | JS/Go/Py 미니 데모 모음 (fibonacci, bouncing balls 등) |
 | `prompt-engineering-study/` | 프롬프트 엔지니어링 학습 |
@@ -67,20 +67,20 @@
 
 ```bash
 # Go 워크스페이스 전체 빌드 (모듈 디렉터리 안에서 실행)
-cd go-work-examples && go work sync
-for d in shared examples/* services/* tools/*; do (cd "$d" && go build ./...) || echo "FAIL: $d"; done
+(cd go-work-examples && go work sync &&
+  for d in shared examples/* services/* tools/*; do (cd "$d" && go build ./...) || exit 1; done)
 
-# MSA SAGA 컴파일 검증 (아직 자동화 테스트 없음)
-cd msa-saga-examples && go build ./...
+# MSA SAGA 컴파일 및 단위 테스트
+(cd msa-saga-examples && go build ./... && go test ./...)
 
 # Python 예제 전체 검증
-cd python-examples && python tools/validate_examples.py
+(cd python-examples && python tools/validate_examples.py)
 
 # Spring Boot 테스트 (H2 자동)
-cd springboot-rest-api && gradle test
+(cd springboot-rest-api && gradle test)
 
 # Airflow 스택 기동
-cd airflow-study && cp .env.example .env && docker compose up airflow-init && docker compose up -d
+(cd airflow-study && cp .env.example .env && docker compose up airflow-init && docker compose up -d)
 ```
 
 ## 주의사항

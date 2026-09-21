@@ -1,13 +1,13 @@
 # Go Workspace Examples
 
-이 프로젝트는 Go 1.18+의 **workspace** 기능을 활용한 실무 환경에서 사용 가능한 다양한 예제들을 제공합니다.
+이 프로젝트는 Go 1.24+의 **workspace** 기능을 활용한 실무 환경에서 사용 가능한 다양한 예제들을 제공합니다.
 
 ## 🚀 빠른 시작
 
 ### 1. 프로젝트 클론 및 설정
 ```bash
-git clone https://github.com/kyungseok-lee/go-work-examples.git
-cd go-work-examples
+git clone https://github.com/kyungseok-lee/study.git
+cd study/go-work-examples
 
 # 워크스페이스 동기화
 go work sync
@@ -67,7 +67,7 @@ go-work-examples/
     └── clean-all.sh                # 모듈 정리
 ```
 
-> **핵심 특징**: Go workspace의 네이티브 기능을 사용하여 `replace` 디렉티브 없이 로컬 모듈을 직접 참조합니다.
+> **핵심 특징**: `go.work`가 로컬 모듈을 연결합니다. 각 소비자 모듈도 `shared v0.0.0`과 `replace ... => ../../shared`를 선언하므로 `GOWORK=off`에서도 독립적으로 빌드할 수 있습니다.
 
 ## 🧪 테스트 및 사용법
 
@@ -84,7 +84,7 @@ This demo shows how Go workspaces enable seamless sharing of code across multipl
 
 1. Configuration Management:
 ----------------------------
-Server Address: localhost:8080
+Server Address: :8080
 Database DSN: host=localhost port=5432 user=postgres password=password dbname=myapp sslmode=disable
 Environment: development
 
@@ -128,7 +128,7 @@ Items: 2
 ✓ Unified error handling with proper HTTP status codes
 ✓ Type-safe event system with shared data structures
 ✓ Common validation utilities
-✓ No replace directives needed - direct local module references
+✓ Workspace module resolution with standalone replace fallback
 ✓ Single workspace for all related projects
 ✓ Consistent dependency versions across all modules
 ✓ Easy refactoring across the entire codebase
@@ -276,7 +276,7 @@ go get -u ./...
 ## 🎯 Go Workspace의 주요 장점
 
 ### 1. 모듈 간 로컬 개발
-- `replace` 디렉티브 없이 로컬 모듈 직접 참조
+- `go.work`로 로컬 모듈 참조, `replace`로 워크스페이스 밖 독립 빌드 지원
 - 실시간 코드 변경 반영
 - 타입 안전성 보장
 
@@ -303,6 +303,10 @@ go get -u ./...
 ```bash
 # env.example 파일을 참고하여 환경 변수 설정
 cp env.example .env
+# Go 서비스는 .env를 자동 로드하지 않습니다. 셸에 내보낸 값만 읽습니다.
+set -a; source .env; set +a
+# 서비스별 기본 포트(8080/8081/8082)를 쓰려면 공통 SERVER_PORT를 해제합니다.
+unset SERVER_PORT
 
 # 또는 직접 설정
 export LOG_LEVEL=debug
@@ -333,4 +337,4 @@ export SERVER_PORT=8080
 
 ## 📄 라이선스
 
-MIT License
+이 하위 프로젝트에는 별도 LICENSE 파일이 포함되어 있지 않습니다.

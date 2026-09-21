@@ -1,5 +1,7 @@
 # Level 4: 실전 프로젝트 (Production Projects)
 
+> 현재 구현 범위: 아래 서비스 디렉터리·API·배포 구성은 구현 과제입니다. 이 디렉터리에는 현재 이 README만 있으며, 실행 가능한 멀티테넌트 예제는 `projects/multi_tenant_search.py`입니다.
+
 ## 학습 목표
 
 실무 시나리오 기반 end-to-end 프로젝트를 통해 Milvus 전문가가 된다.
@@ -13,7 +15,7 @@
 ## 🚀 프로젝트 목록
 
 ### 프로젝트 1: Semantic Search Service
-**디렉토리**: `semantic_search_service/`
+**구현 예정 디렉토리**: `semantic_search_service/`
 
 **기술 스택**:
 - FastAPI (RESTful API)
@@ -42,7 +44,7 @@ GET  /api/v1/metrics         # Metrics
 ---
 
 ### 프로젝트 2: E-commerce Recommendation Engine
-**디렉토리**: `recommendation_engine/`
+**구현 예정 디렉토리**: `recommendation_engine/`
 
 **기술 스택**:
 - FastAPI
@@ -65,7 +67,7 @@ GET  /api/v1/metrics         # Metrics
 ---
 
 ### 프로젝트 3: Image Similarity Search
-**디렉토리**: `image_similarity_search/`
+**구현 예정 디렉토리**: `image_similarity_search/`
 
 **기술 스택**:
 - CLIP / ResNet (Image embeddings)

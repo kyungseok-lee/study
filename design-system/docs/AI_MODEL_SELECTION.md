@@ -29,11 +29,11 @@ Review cadence: re-check model names and recommendations monthly.
 Use this structure for better outputs:
 1. Goal and constraints (e.g., backward compatibility in `exports`)
 2. Exact files to touch
-3. Required verification (`npm run build`)
+3. Required verification (`npm run build` and `npm test`)
 4. Output format (patch + summary + risk notes)
 
 ## Verification Rule
 Regardless of model choice, accept changes only when:
-- `npm run build` passes
+- `npm run build` and `npm test` pass
 - Generated `dist/` output matches intent
 - Public API changes are documented in `README.md` or `CHANGELOG.md`

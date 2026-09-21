@@ -51,13 +51,14 @@ cd tools/migration && go run main.go list
 
 ### `msa-saga-examples/`
 
-Running services needs Docker Compose (PostgreSQL ×4, Redis, Kafka, Temporal). No automated tests exist yet — verify with `go build ./...`.
+Running services needs Docker Compose (four service PostgreSQL databases plus one Temporal database, Redis, Kafka, Temporal). Unit tests cover common errors, order domain transitions, and order event handling; run `go build ./...` and `go test ./...` without starting Docker.
 
 ```bash
 docker compose up -d                  # before running services
 make check-volumes
 
 go build ./...                        # compile check
+go test ./...                         # unit tests
 ```
 
 Services: 8001–8004 · Kafka UI: http://localhost:8080 · Temporal UI: http://localhost:8088
@@ -98,6 +99,7 @@ docker compose up -d
 
 ```bash
 npm run build    # regenerates dist/ from src/
+npm test         # token, CSS, export, determinism and failure-guard checks
 open examples/index.html
 ```
 
@@ -105,7 +107,7 @@ Full details in `design-system/AGENTS.md`.
 
 ## Architecture Notes
 
-**`go-work-examples`** — Go workspace. Consumer `go.mod`s pin a pseudo-version of `shared/` but each also carries a `replace ... => ../../shared` directive, so builds work both inside the workspace (`go.work`) and per-module standalone. `shared/` is the cross-service library; changes propagate immediately to all services and tools.
+**`go-work-examples`** — Go workspace. Consumer `go.mod`s require the local `shared/` module at `v0.0.0` and each carries a `replace ... => ../../shared` directive, so builds work both inside the workspace (`go.work`) and per-module standalone. `shared/` is the cross-service library; changes propagate immediately to all services and tools.
 
 **`msa-saga-examples`** — Choreography SAGA over Kafka with Outbox pattern: business entity + outbox event saved in one DB transaction, then a background worker polls and publishes to Kafka. Each service follows `internal/{domain,repository,service,handler,worker}` layering. Idempotency checked at event-handler entry via Redis. Temporal containers exist in compose but no Go code uses Temporal yet.
 
@@ -120,7 +122,7 @@ Full details in `design-system/AGENTS.md`.
 - **Committed build artifacts**: `webpack-example/dist/` and `webpack-study/dist/` are tracked in git on purpose; `design-system/dist/` is generated (untracked). Don't confuse the two policies.
 - **`extjs-study/` requires manual SDK download**: HTML demos reference `libs/ext-5.1.4/`, `libs/ext-6.2.0-gpl/`, which are gitignored. Missing-lib errors are expected until downloaded (see its README).
 - **Hardcoded local credentials** (MariaDB `root/1234`, Postgres `pass`, dev JWT secrets) across study configs are intentional for local study use — don't refactor them into env vars unprompted.
-- **`go-tuckersGo-goWeb/`**: all 3 modules declare the same module path (`github.com/kyungseok-lee/learn-go-web`). Keep them independent; never combine under one `go.work`.
+- **`go-tuckersGo-goWeb/`**: the 3 independent modules use their actual `github.com/kyungseok-lee/study/go-tuckersGo-goWeb/<lesson>/src` paths (`web01`, `web02-json`, `web03-test`). Build and test inside each lesson's `src/`; no shared `go.work` is needed.
 - Python: activate the project's `venv` before running scripts or installing packages. `langchain-basic-study/` additionally needs a `.env` (see its README).
 - Infrastructure-dependent projects (`msa-saga-examples`, `airflow-study`, ELK/vector-db examples, `springboot-rest-api` for runtime) require Docker Compose to be up first.
 

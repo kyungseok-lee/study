@@ -86,11 +86,11 @@ python 04_basic_search.py --topk 10
 ### 데이터 확인
 
 ```bash
-# Milvus Web UI (Attu) - Optional
-# http://localhost:3000
+# Milvus Web UI (Attu) - 별도 설치 필요 (현재 Compose에 없음)
+# 추가할 경우 Grafana의 호스트 포트 3000과 다른 포트를 사용하세요.
 
 # MinIO Console
-# http://localhost:9001 (admin/minioadmin)
+# http://localhost:9001 (minioadmin/minioadmin)
 
 # Grafana (모니터링)
 # http://localhost:3000 (admin/admin)
@@ -161,8 +161,8 @@ Week 7-10: Level 4 (실전)
 # 전체 테스트 실행
 pytest
 
-# 특정 레벨 테스트
-pytest level_1_basics/tests/
+# 현재 단위 테스트 파일
+pytest tests/test_units.py
 
 # 코드 포맷팅
 black .
@@ -179,7 +179,7 @@ python -c "from config.settings import settings; print(settings)"
 ## 🆘 도움말
 
 문제가 발생하면:
-1. [문제 해결 가이드](./README.md#문제-해결) 확인
+1. [문제 해결 가이드](#-문제-해결) 확인
 2. Milvus 로그 확인: `docker compose logs milvus`
 3. 이슈 등록: GitHub Issues
 

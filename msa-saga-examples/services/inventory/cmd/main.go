@@ -16,14 +16,14 @@ import (
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
 
-	commonerrors "github.com/kyungseok-lee/msa-saga-go-examples/common/errors"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/events"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/idempotency"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/logger"
-	"github.com/kyungseok-lee/msa-saga-go-examples/common/messaging"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/inventory/internal/repository"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/inventory/internal/service"
-	"github.com/kyungseok-lee/msa-saga-go-examples/services/inventory/internal/worker"
+	commonerrors "github.com/kyungseok-lee/study/msa-saga-examples/common/errors"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/events"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/idempotency"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/logger"
+	"github.com/kyungseok-lee/study/msa-saga-examples/common/messaging"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/inventory/internal/repository"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/inventory/internal/service"
+	"github.com/kyungseok-lee/study/msa-saga-examples/services/inventory/internal/worker"
 )
 
 func main() {

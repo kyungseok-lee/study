@@ -15,6 +15,7 @@ Generated artifacts are written to `dist/` (`css/`, `scss/`, `json/`, `js/`). Do
 - `npm install`: install dependencies (minimal; build is pure Node).
 - `npm run build`: rebuild all distributable assets from `src/` into `dist/`.
 - `npm run prepublishOnly`: runs build before publishing.
+- `npm test`: run the zero-dependency checks in `scripts/test.cjs` after building.
 
 Example local workflow:
 ```bash
@@ -31,8 +32,8 @@ Use `examples/index.html` for quick manual verification of token and component o
 - Keep files ASCII unless an existing file already uses other characters.
 
 ## Testing Guidelines
-There is no dedicated automated test suite yet. Every change should include:
-- Successful `npm run build`.
+The automated suite in `scripts/test.cjs` checks build artifacts, CSS references, theme parity, component examples, exports, SCSS, DTCG, determinism, and failure guards. Every change should include:
+- Successful `npm run build` and `npm test`.
 - Manual check in `examples/index.html`.
 - Verification that generated outputs in `dist/` reflect intended changes.
 

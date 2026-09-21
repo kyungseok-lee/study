@@ -3,7 +3,7 @@ package events
 import (
 	"time"
 	"github.com/google/uuid"
-	"github.com/kyungseok-lee/go-work-examples/shared/types"
+	"github.com/kyungseok-lee/study/go-work-examples/shared/types"
 )
 
 type EventType string

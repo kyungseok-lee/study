@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Fixed
+- Repository, issue, and homepage links now point to the `study/design-system` monorepo location.
+- Setup and agent guides describe local installation, the existing 25-test suite, and the current 292 token values.
+- The example header displays the current package version (3.2.0).
+
 ## [3.2.0] - 2026-05-03
 
 ### Added

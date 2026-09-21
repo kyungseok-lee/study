@@ -1,24 +1,24 @@
 # ELK Stack Example Makefile
-# GitHub: https://github.com/kyungseok-lee/elk-examples
+# GitHub: https://github.com/kyungseok-lee/study/tree/main/elk-examples
 
 .PHONY: help build up down logs clean dev-server dev-client setup
 
 # 기본 타겟
 help:
 	@echo "ELK Stack Example 프로젝트"
-	@echo "GitHub: https://github.com/kyungseok-lee/elk-examples"
+	@echo "GitHub: https://github.com/kyungseok-lee/study/tree/main/elk-examples"
 	@echo ""
 	@echo "사용 가능한 명령어:"
-	@echo "  make setup       - 프로젝트 초기 설정"
-	@echo "  make up          - 모든 서비스 시작 (Docker Compose)"
-	@echo "  make down        - 모든 서비스 중지"
-	@echo "  make logs        - 서비스 로그 확인"
-	@echo "  make build       - 모든 이미지 빌드"
-	@echo "  make clean       - 컨테이너 및 볼륨 정리"
-	@echo "  make dev-server  - Go 서버 로컬 개발 모드"
-	@echo "  make dev-client  - Next.js 클라이언트 로컬 개발 모드"
-	@echo "  make status      - 서비스 상태 확인"
-	@echo "  make filebeat    - Filebeat 상태 확인"
+	@echo "  make -f scripts/Makefile setup       - 프로젝트 초기 설정"
+	@echo "  make -f scripts/Makefile up          - 모든 서비스 시작 (Docker Compose)"
+	@echo "  make -f scripts/Makefile down        - 모든 서비스 중지"
+	@echo "  make -f scripts/Makefile logs        - 서비스 로그 확인"
+	@echo "  make -f scripts/Makefile build       - 모든 이미지 빌드"
+	@echo "  make -f scripts/Makefile clean       - 컨테이너 및 볼륨 정리"
+	@echo "  make -f scripts/Makefile dev-server  - Go 서버 로컬 개발 모드"
+	@echo "  make -f scripts/Makefile dev-client  - Next.js 클라이언트 로컬 개발 모드"
+	@echo "  make -f scripts/Makefile status      - 서비스 상태 확인"
+	@echo "  make -f scripts/Makefile filebeat    - Filebeat 상태 확인"
 
 # 프로젝트 초기 설정
 setup:
@@ -86,12 +86,11 @@ test-server:
 	cd server && go test ./...
 
 test-client:
-	@echo "🧪 Next.js 클라이언트 테스트를 실행합니다..."
-	cd client && npm test
+	@echo "ℹ️ Next.js 클라이언트에는 자동화 테스트와 npm test 스크립트가 없습니다 (건너뜀)."
 
 # 전체 테스트
 test: test-server test-client
-	@echo "✅ 모든 테스트가 완료되었습니다!"
+	@echo "✅ Go 패키지 검증 완료. 서버 테스트 파일과 클라이언트 자동화 테스트는 미구현입니다."
 
 # Filebeat 상태 확인
 filebeat:

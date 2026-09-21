@@ -1,10 +1,10 @@
-module github.com/kyungseok-lee/go-work-examples/examples/workspace-demo
+module github.com/kyungseok-lee/study/go-work-examples/examples/workspace-demo
 
 go 1.24.0
 
 require (
 	github.com/google/uuid v1.6.0
-	github.com/kyungseok-lee/go-work-examples/shared v0.0.0-20250908215140-e8331dc2750b
+	github.com/kyungseok-lee/study/go-work-examples/shared v0.0.0
 )
 
-replace github.com/kyungseok-lee/go-work-examples/shared => ../../shared
+replace github.com/kyungseok-lee/study/go-work-examples/shared => ../../shared

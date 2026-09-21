@@ -6,10 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm run build          # prebuild clears dist/, then runs scripts/build-tokens.cjs
+npm test               # run scripts/test.cjs after building
 npm run clean          # remove dist/ only
 ```
 
-No dependencies to install — pure Node.js (>=16). The build script is `.cjs` because `package.json` has `"type": "module"`. There is no automated test suite; verify changes by running the build and opening `examples/index.html` in a browser to confirm token + component output (light and dark via `<html data-theme="dark">`).
+No dependencies to install — pure Node.js (>=16). The build script is `.cjs` because `package.json` has `"type": "module"`. Run `npm test` after the build for artifact integrity, CSS references, theme parity, examples, component states, SCSS, DTCG, deterministic builds, and failure guards. Also open `examples/index.html` in a browser to confirm token + component output (light and dark via `<html data-theme="dark">`).
 
 `dist/` is fully generated. Never hand-edit anything under `dist/` — change the source in `src/` (or `scripts/build-tokens.cjs`) and rebuild.
 

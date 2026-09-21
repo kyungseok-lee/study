@@ -1,4 +1,4 @@
-module github.com/kyungseok-lee/msa-saga-go-examples
+module github.com/kyungseok-lee/study/msa-saga-examples
 
 go 1.23
 

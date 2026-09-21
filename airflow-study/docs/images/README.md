@@ -34,7 +34,7 @@
 | `08-08-dagrun-actions.png` | DAGRun 행 헤더 우측 액션들 |
 | `10-01-trigger-button.png` | DAG 헤더의 ▶ Trigger 버튼 위치 |
 | `10-02-trigger-config-modal.png` | Trigger DAG w/ config 모달 |
-| `11-01-backfill-modal.png` | Web UI Backfill 모달 (Airflow 2.10+) |
+| `11-01-backfill-modal.png` | Web UI Backfill 모달 (Airflow 3.0+) |
 | `11-02-backfill-progress.png` | 백필 진행 중 Grid View |
 | `14-01-rendered-template.png` | Rendered Template으로 Jinja 디버깅 |
 | `17-01-variables.png` | Admin → Variables 화면 |
